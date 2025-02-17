@@ -17,8 +17,8 @@
         <ul class="side-menu">
             <li><a href="#" data-section="dashboard-content" onclick="showSection('dashboard-content', this)"><i class="fas fa-gauge"></i> Dashboard</a></li>
             <li><a href="#" data-section="products-content" onclick="showSection('products-content', this)"><i class="fas fa-box"></i> Products</a></li>
-            <li><a href="#" data-section="products-content" onclick="showSection('products-content', this)"><i class="fas fa-box"></i> Order Confimation</a></li>
-            <li><a href="#" data-section="users-content" onclick="showSection('users-content', this)"><i class="fas fa-box"></i> Users</a></li>            <!--MAKIKITA KUNG SINO YUNG MGA NAG USER SA PAGE -->
+            <li><a href="#" data-section="orderconfirm-content" onclick="showSection('orderconfirm-content', this)"><i class="fas fa-box"></i> Order Confimation</a></li>
+            <li><a href="#" data-section="users-content" onclick="showSection('users-content', this)"><i class="fas fa-box"></i> Users</a></li>
             <li id="logout"><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </section>
@@ -120,7 +120,6 @@
                             <td>2024-08-25</td>
                             <td><span class="status completed">Completed</span></td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>
@@ -134,14 +133,6 @@
             <!--ITO YUNG LUMALABAS PAG CLINICK MO YUNG ADD PRODUCT-->
             <div class="product-form" id="product-form">
                 <h2>Add Product</h2>
-                <label for="product-name">Product Name:</label>
-                <input type="text" id="product-name" placeholder="Product Name">
-
-                <label for="product-price">Price:</label>
-                <input type="number" id="product-price" placeholder="Price (₱)">
-
-                <label for="product-image">Image URL:</label>
-                <input type="text" id="product-image" placeholder="Image URL">
 
                 <label for="product-category">Category:</label>
                 <select id="product-category">
@@ -150,6 +141,15 @@
                     <option value="lubricants">Lubricants</option>
                     <option value="oil">Oil</option>
                 </select>
+
+                <label for="product-name">Product Name:</label>
+                <input type="text" id="product-name" placeholder="Product Name">
+
+                <label for="product-price">Price:</label>
+                <input type="number" id="product-price" placeholder="Price (₱)">
+
+                <label for="product-image">Image URL:</label>
+                <input type="text" id="product-image" placeholder="Image URL">
 
                 <button onclick="addProduct()">Confirm</button>
                 <button onclick="cancelAddProduct()">Cancel</button>
@@ -209,8 +209,29 @@
                 <button onclick="addProduct()">Confirm</button>
             </div>
         </div>
-    </main>
 
-    <script src="/admin-jmab/admin.js"></script>
+        <div id="orderconfirm-content" class="content-section">
+            <h1>CONFIRM ORDERS</h1>
+        </div>
+
+        <div id="users-content" class="content-section">
+            <h1>Registered J-Mab Users</h1>
+            <table id="customers-table">
+                <thead>
+                    <tr>
+                        <!--<th>ID</th>-->
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 <!-- Customer rows will be inserted here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script src="../admin-jmab/admin.js"></script>
 </body>
 </html>

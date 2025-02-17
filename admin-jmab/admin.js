@@ -1,82 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const loginForm = document.querySelector("#login-form");
     const loadingScreen = document.getElementById("loading-screen");
 
-    // Login form submission
-
-    if (loginForm) {
-        loginForm.addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevents default form submission
-
-            const email = document.getElementById("email").value.trim();
-            const password = document.getElementById("password").value.trim();
-
-            loadingScreen.style.display = "flex";
-
-            console.log("Email: ", email);  // Check if email is correct
-            console.log("Password: ", password); 
-
-            // Check if fields are filled in
-            if (!email || !password) {
-                alert("Please fill in all required fields.");
-                loadingScreen.style.display = "none";
-                return;
-            }
-
-            // Prepare data to be sent to the PHP script
-            const formData = new FormData();
-            formData.append('email', email);
-            formData.append('password', password);
-
-            // Send POST request to PHP backend using fetch
-            fetch('admin-jmab/login-admin.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json()) // Assuming the backend sends JSON responses
-            .then(data => {
-                loadingScreen.style.display = "none";
-
-                if (data.success) {
-                    window.location.href = "/admin-jmab/testing-admin.html"; // Redirect to admin page
-                } else {
-                    alert(data.message); // Display error message from PHP
-                }
-            })
-            .catch(error => {
-                loadingScreen.style.display = "none";
-                alert("An error occurred during login. Please try again.");
-            });
-        });
-    }
-});
-
-            // Check if the provided credentials match any in the valid list
-            const user = validCredentials.find(cred => cred.email === email && cred.password === password);
-
-            setTimeout(() => {
-                // Hide the loading screen
-                loadingScreen.style.display = "none";
-
-                if (user) {
-                    window.location.href = "/admin-jmab/testing-admin.html"; 
-                } else {
-                    alert("Invalid email or password!"); 
-                }
-            }, 1500); // 1.5 sec delay for loading screen
-    
     // Logout confirmation
     document.getElementById('logout').addEventListener('click', function(e) {
         e.preventDefault();
 
         const isConfirmed = confirm("Are you sure you want to log out?");
         if (isConfirmed) {
-            window.location.href = '/admin-jmab/signin-admin.html'; // Redirect to login page
+            window.location.href = '../J-Mab/HTML/sign-in.php'; // Redirect to login page
         }
     });
 
     // Display products on page load
-    displayProducts(); 
+    displayProducts();
+});
 
 // Function to display locally stored products in LocalStorage
 function displayProducts() {
@@ -141,7 +78,7 @@ function resetProductForm() {
 // Function to delete a product
 function deleteProduct(index) {
     let products = JSON.parse(localStorage.getItem('products')) || [];
-    products.splice(index, 1); // Remove the product at the specified index
+    products.splice(index, 1); 
     localStorage.setItem('products', JSON.stringify(products)); // Update localStorage
     displayProducts(); // Re-display the products after deletion
 }
@@ -152,7 +89,7 @@ function toggleProductForm() {
     form.style.display = form.style.display === 'flex' ? 'none' : 'flex';
 }
 
-// Function to switch between sections in the admin panel
+// Function to switch sections in the admin panel
 function showSection(sectionId, element) {
     document.querySelectorAll('.content-section').forEach(section => {
         section.style.display = 'none';
@@ -172,3 +109,32 @@ function showSection(sectionId, element) {
 function cancelAddProduct() {
     document.getElementById('product-form').style.display = 'none';
 }
+
+// Fetch customer data from the server
+fetch('/JMAB/admin-jmab/fetch_customer.php')
+.then(response => response.json())
+.then(data => {
+    const tableBody = document.querySelector('#customers-table tbody');
+
+    // Clear any existing rows
+    tableBody.innerHTML = '';
+
+    // Add a row for each customer
+    data.forEach(customer => {
+        const row = document.createElement('tr');
+        
+        //ADD  <td>${customer.id}</td> if u need ID//
+        row.innerHTML = `
+            <td>${customer.first_name}</td>
+            <td>${customer.last_name}</td>
+            <td>${customer.email}</td>
+            <td>${customer.password}</td>
+        `;
+
+        tableBody.appendChild(row);
+    });
+})
+.catch(error => {
+    console.error('Error fetching customer data:', error);
+});
+
