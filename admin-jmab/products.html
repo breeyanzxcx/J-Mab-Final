@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J-Mab Admin</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+}
+
+/* SIDEBAR */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #012647;
+    transition: .3s ease;
+    padding-top: 20px;
+    color: white; 
+}
+
+#sidebar hr{
+    border: 1px solid red;
+}
+
+#sidebar .h1{
+    font-weight: 100;
+    font-size: 30px;
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+#sidebar .side-menu {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#sidebar .side-menu li {
+    height: 48px;
+    margin-left: 6px;
+    border-radius: 48px 0 0 48px;
+}
+
+#sidebar .side-menu li a {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 48px;
+    color: white;
+    transition: 0.3s;
+}
+
+main {
+    margin-left: 200px; 
+    padding: 20px;
+    min-height: 100vh;
+    background-color: #DCD7C9; 
+    color: black; 
+    width: calc(100% - 200px);
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.flex-container h3 {
+    font-size: 30px;
+    font-weight: lighter;
+    margin-top: 50px;
+}
+
+.item-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 320px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.item-container img {
+    width: 225px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.tire-section,
+.Battery-section,
+.Oil-section,
+.Lubricant-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    margin: 20px 0;
+}
+
+.add-product-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin: 8px 0;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+textarea {
+    height: 100px;
+}
+
+.dynamic-fields {
+    margin-top: 10px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+</style>
+</head>
+
+<body>
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+       <div class="h1">J-Mab Admin Page</div>
+        <hr>
+        <ul class="side-menu">
+            <li><a href="/JMAB/admin-jmab/dashboard.html"><i class="fas fa-gauge"></i> Dashboard</a></li>
+            <li><a href="/JMAB/admin-jmab/products.html"><i class="fas fa-box"></i> Products</a></li>
+            <li><a href="/JMAB/admin-jmab/orderConfirm.html"><i class="fas fa-box"></i> Order Confimation</a></li>
+            <li><a href="/JMAB/admin-jmab/users.html"><i class="fas fa-box"></i> Users</a></li>
+            <li id="logout"><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </section>
+
+    <main>
+    <div id="products-content" class="content-section">
+        <!--ITO YUNG LUMALABAS PAG CLINICK MO YUNG ADD PRODUCT-->
+        <div class="container">
+            <h1>Add new product</h1>
+        <button id="addProductButton" onclick="showAddProductForm()">Add Product</button>
+
+        <!-- Add Product Form (Initially Hidden) -->
+        <div id="addProductForm" class="add-product-form" style="display:none;">
+            <h2>Add Product</h2>
+            <form>
+                <select id="category" name="category" onchange="showFields()">
+                    <option value="tire">Tire</option>
+                    <option value="lubricant">Lubricant</option>
+                    <option value="oil">Oil</option>
+                    <option value="battery">Battery</option>
+                </select>
+
+                <div id="tireFields" class="dynamic-fields" style="display:none;">
+                    <label for="size">Size:</label>
+                    <input type="text" id="size" name="size">
+                    <label for="nameBrand">Name/Brand:</label>
+                    <input type="text" id="nameBrand" name="nameBrand">
+                    <label for="price">Price:</label>
+                    <input type="number" id="price" name="price">
+                    <label for="stock">Stock:</label>
+                    <input type="number" id="stock" name="stock">
+                    <label for="imgUrl">Image URL:</label>
+                    <input type="text" id="imgUrl" name="imgUrl">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description"></textarea>
+                </div>
+
+                <div id="lubricantOilFields" class="dynamic-fields" style="display:none;">
+                    <label for="nameBrand">Name/Brand:</label>
+                    <input type="text" id="nameBrand" name="nameBrand">
+                    <label for="price">Price:</label>
+                    <input type="number" id="price" name="price">
+                    <label for="stock">Stock:</label>
+                    <input type="number" id="stock" name="stock">
+                    <label for="imgUrl">Image URL:</label>
+                    <input type="text" id="imgUrl" name="imgUrl">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description"></textarea>
+                </div>
+
+                <div id="batteryFields" class="dynamic-fields" style="display:none;">
+                    <label for="voltage">Voltage:</label>
+                    <input type="text" id="voltage" name="voltage">
+                    <label for="nameBrand">Name/Brand:</label>
+                    <input type="text" id="nameBrand" name="nameBrand">
+                    <label for="price">Price:</label>
+                    <input type="number" id="price" name="price">
+                    <label for="stock">Stock:</label>
+                    <input type="number" id="stock" name="stock">
+                    <label for="imgUrl">Image URL:</label>
+                    <input type="text" id="imgUrl" name="imgUrl">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description"></textarea>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="button" id="cancelButton" onclick="cancelForm()">Cancel</button>
+                    <button type="submit" id="confirmButton">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <div class="flex-container">
+        <div class="tire-title"><h3>Tire section</h3>
+        </div>
+            <div class="tire-section">
+                <div class="item-container">
+                    <!--DITO MALALAGAY YUNG MGA ITEMS-->
+                </div>
+            </div>  
+    </div>
+    <hr>
+
+    <div class="flex-container" >
+        <div class="Battery-title"><h3>Battery section</h3>
+        </div>
+            <div class="Battery-section">
+                <div class="item-container">
+                    <!--DITO MALALAGAY YUNG MGA ITEMS-->
+                </div>
+            </div>   
+    </div>
+    <hr>
+
+    <div class="flex-container" >
+        <div class="Lubricant-title"><h3>Lubricant section</h3>
+        </div>
+            <div class="Lubricant-section">
+                <div class="item-container">
+                    <!--DITO MALALAGAY YUNG MGA ITEMS-->
+                </div>
+            </div>   
+    </div>
+    <hr>
+
+    <div class="flex-container" >
+        <div class="Oil-title"><h3>Oil section</h3>
+        </div>
+            <div class="Oil-section">
+                <div class="item-container">
+                    <!--DITO MALALAGAY YUNG MGA ITEMS-->
+                </div>
+            </div>
+    </div>
+</main>
+<script src="JS/products.js"></script>
+</body>
+</html>

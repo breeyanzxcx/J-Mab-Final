@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J-Mab Admin</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+        }
+
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 100%;
+            background-color: #012647;
+            transition: .3s ease;
+            padding-top: 20px;
+            color: white;
+        }
+
+        #sidebar hr {
+            border: 1px solid red;
+        }
+
+        #sidebar .h1 {
+            font-weight: 100;
+            font-size: 30px;
+            text-align: center;
+            padding-bottom: 50px;
+        }
+
+        #sidebar .side-menu {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        #sidebar .side-menu li {
+            height: 48px;
+            margin-left: 6px;
+            border-radius: 48px 0 0 48px;
+        }
+
+        #sidebar .side-menu li a {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            padding: 10px;
+            gap: 10px;
+            border-radius: 48px;
+            color: white;
+            transition: 0.3s;
+        }
+
+        main {
+            margin-left: 200px;
+            padding: 20px;
+            min-height: 100vh;
+            background-color: #DCD7C9;
+            color: black;
+            width: calc(100% - 200px);
+        }
+
+        #users-content {
+            padding: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #users-content h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        #customers-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #customers-table th, #customers-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #customers-table th {
+            background: #007bff;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        #customers-table tbody tr:hover {
+            background: #f1f1f1;
+        }
+
+        .action-btn {
+            background: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .action-btn:hover {
+            background: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <section id="sidebar">
+        <div class="h1">J-Mab Admin Page</div>
+        <hr>
+        <ul class="side-menu">
+            <li><a href="/JMAB/admin-jmab/dashboard.html"><i class="fas fa-gauge"></i> Dashboard</a></li>
+            <li><a href="/JMAB/admin-jmab/products.html"><i class="fas fa-box"></i> Products</a></li>
+            <li><a href="/JMAB/admin-jmab/orderConfirm.html"><i class="fas fa-box"></i> Order Confimation</a></li>
+            <li><a href="/JMAB/admin-jmab/users.html"><i class="fas fa-box"></i> Users</a></li>
+            <li id="logout"><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </section>
+
+    <main>
+        <div id="users-content" class="content-section">
+            <h1>Registered Users</h1>
+            <table id="customers-table">
+                <thead>
+                    <tr>
+                        <!--<th>ID</th>-->
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Address</th>
+                        <th>        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--DITO MALALAGAY YUNG MGA USER-->
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script src="JS/users.js"></script>
+</body>
+</html>

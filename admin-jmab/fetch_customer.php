@@ -1,7 +1,5 @@
 <?php
-
-// fetch_customers.php
-
+// Database connection
 $host = 'localhost';
 $db = 'business-jmab';
 $user = 'root';
@@ -13,21 +11,21 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch customers from the database (!!!!!!!!!ADD ID IF NEEDED!!!!!!!!
-$sql = "SELECT first_name, last_name, email, password, roles, address FROM users WHERE roles !='admin'";
+// Fetch users from the database
+$sql = "SELECT id, first_name, last_name, address, email FROM users WHERE roles != 'admin'";  
 $result = $conn->query($sql);
 
-$customers = [];
+$users = [];
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $customers[] = $row;
+        $users[] = $row;
     }
 }
 
 // Return data as JSON
 header('Content-Type: application/json');
-echo json_encode($customers);
+echo json_encode($users);
 
 $conn->close();
 ?>
