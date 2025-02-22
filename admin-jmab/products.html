@@ -6,8 +6,8 @@
     <title>J-Mab Admin</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
+<style>
+* {
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -28,8 +28,9 @@ body {
     height: 100%;
     background-color: #012647;
     transition: .3s ease;
-    padding-top: 20px;
     color: white; 
+    border-top-right-radius: 15px; 
+    border-bottom-right-radius: 15px; 
 }
 
 #sidebar hr{
@@ -40,7 +41,11 @@ body {
     font-weight: 100;
     font-size: 30px;
     text-align: center;
-    padding-bottom: 50px;
+}
+
+#sidebar img{
+    width: 130px;
+    height: 130px;
 }
 
 #sidebar .side-menu {
@@ -67,7 +72,7 @@ body {
 }
 
 main {
-    margin-left: 200px; 
+    margin-left: 190px; 
     padding: 20px;
     min-height: 100vh;
     background-color: #DCD7C9; 
@@ -99,13 +104,14 @@ main {
     padding: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    white-space: wrap; /* Allow text to wrap */
 }
 
-.item-container img {
-    width: 225px;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 8px;
+.item-container p, .item-container h4 {
+    max-width: 100%;
+    word-wrap: break-word; 
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
 .tire-section,
@@ -117,14 +123,6 @@ main {
     gap: 20px;
     justify-content: flex-start;
     margin: 20px 0;
-}
-
-.add-product-form {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
 }
 
 label {
@@ -165,99 +163,228 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product-item {
+    width: 200px;
+    padding: 10px;
+    background: white;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    color: black; 
+}
+
+.product-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.item-container img {
+    width: 225px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.tire-section,
+.Battery-section,
+.Oil-section,
+.Lubricant-section{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; 
+    justify-content: flex-start; 
+    margin: 20px 0; 
+}
+
+.flex-container h3 {
+    font-size: 30px;
+    font-weight: lighter;
+    margin-top: 50px;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+  }
+  
+  #addProductButton {
+    background-color:#012647;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #addProductButton:hover {
+    background-color: #00796b;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+  
+  #productFormContainer {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    display: none;
+  }
+  
+  form div {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+  }
+  
+  input[type="text"], input[type="number"], input[type="url"], textarea, select {
+    width: 250px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  input[type="submit"], #cancelButton {
+    background-color: #009688;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    width: auto;
+  }
+  
+  #cancelButton {
+    background-color: #808080;
+    width: auto;
+  }
+
+  #sidebar .side-menu li.active {
+    background-color: #023d6d; /* A slightly lighter shade than the sidebar background */
+}
+
+#sidebar .side-menu li.active a {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* Optional: Add hover effect for better UX */
+#sidebar .side-menu li a:hover {
+    background-color: #023d6d;
+    color: #ffffff;
+}
+
+#sidebar .side-menu li a:hover {
+    background-color: #023d6d;
+    color: #ffffff;
+}
+
+.logo {
+    filter: invert(1) brightness(1000%) grayscale(100%) contrast(100%) sepia(0) saturate(0);
+    }
 </style>
 </head>
 
 <body>
     <!-- SIDEBAR -->
     <section id="sidebar">
-       <div class="h1">J-Mab Admin Page</div>
+        <div class="h1">
+            <img src="ICONS.png" class="logo" alt="Logo">
+            <p> Admin </p>
+        </div>
         <hr>
         <ul class="side-menu">
             <li><a href="/JMAB/admin-jmab/dashboard.html"><i class="fas fa-gauge"></i> Dashboard</a></li>
             <li><a href="/JMAB/admin-jmab/products.html"><i class="fas fa-box"></i> Products</a></li>
-            <li><a href="/JMAB/admin-jmab/orderConfirm.html"><i class="fas fa-box"></i> Order Confimation</a></li>
-            <li><a href="/JMAB/admin-jmab/users.html"><i class="fas fa-box"></i> Users</a></li>
+            <li><a href="/JMAB/admin-jmab/orderConfirm.html"><i class="fas fa-box"></i> Orders</a></li>
+            <li><a href="/JMAB/admin-jmab/users.html"><i class="fas fa-box"></i> Customers</a></li>
             <li id="logout"><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </section>
 
-    <main>
-    <div id="products-content" class="content-section">
-        <!--ITO YUNG LUMALABAS PAG CLINICK MO YUNG ADD PRODUCT-->
-        <div class="container">
-            <h1>Add new product</h1>
-        <button id="addProductButton" onclick="showAddProductForm()">Add Product</button>
+<main>
+    <h1>Add new product</h1>
+    <button id="addProductButton">Add Product</button>
 
-        <!-- Add Product Form (Initially Hidden) -->
-        <div id="addProductForm" class="add-product-form" style="display:none;">
-            <h2>Add Product</h2>
-            <form>
-                <select id="category" name="category" onchange="showFields()">
-                    <option value="tire">Tire</option>
-                    <option value="lubricant">Lubricant</option>
-                    <option value="oil">Oil</option>
-                    <option value="battery">Battery</option>
-                </select>
-
-                <div id="tireFields" class="dynamic-fields" style="display:none;">
-                    <label for="size">Size:</label>
-                    <input type="text" id="size" name="size">
-                    <label for="nameBrand">Name/Brand:</label>
-                    <input type="text" id="nameBrand" name="nameBrand">
-                    <label for="price">Price:</label>
-                    <input type="number" id="price" name="price">
-                    <label for="stock">Stock:</label>
-                    <input type="number" id="stock" name="stock">
-                    <label for="imgUrl">Image URL:</label>
-                    <input type="text" id="imgUrl" name="imgUrl">
-                    <label for="description">Description:</label>
-                    <textarea id="description" name="description"></textarea>
-                </div>
-
-                <div id="lubricantOilFields" class="dynamic-fields" style="display:none;">
-                    <label for="nameBrand">Name/Brand:</label>
-                    <input type="text" id="nameBrand" name="nameBrand">
-                    <label for="price">Price:</label>
-                    <input type="number" id="price" name="price">
-                    <label for="stock">Stock:</label>
-                    <input type="number" id="stock" name="stock">
-                    <label for="imgUrl">Image URL:</label>
-                    <input type="text" id="imgUrl" name="imgUrl">
-                    <label for="description">Description:</label>
-                    <textarea id="description" name="description"></textarea>
-                </div>
-
-                <div id="batteryFields" class="dynamic-fields" style="display:none;">
-                    <label for="voltage">Voltage:</label>
-                    <input type="text" id="voltage" name="voltage">
-                    <label for="nameBrand">Name/Brand:</label>
-                    <input type="text" id="nameBrand" name="nameBrand">
-                    <label for="price">Price:</label>
-                    <input type="number" id="price" name="price">
-                    <label for="stock">Stock:</label>
-                    <input type="number" id="stock" name="stock">
-                    <label for="imgUrl">Image URL:</label>
-                    <input type="text" id="imgUrl" name="imgUrl">
-                    <label for="description">Description:</label>
-                    <textarea id="description" name="description"></textarea>
-                </div>
-
-                <div class="form-buttons">
-                    <button type="button" id="cancelButton" onclick="cancelForm()">Cancel</button>
-                    <button type="submit" id="confirmButton">Confirm</button>
-                </div>
-            </form>
+<div id="productFormContainer" style="display: none;">
+    <h3>Product Details</h3>
+    <form id="createProductForm">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
         </div>
-    </div>
+        <div>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description"></textarea>
+        </div>
+        <div>
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="">Select Category</option>
+                <option value="Tires">Tires</option>
+                <option value="Batteries">Batteries</option>
+                <option value="Oils">Oils</option>
+                <option value="Lubricants">Lubricants</option>
+                <!-- Add more categories as needed -->
+            </select>
+        </div>
+        <div id="sizeField" style="display:none;">
+            <label for="size">Size:</label>
+            <input type="text" id="size" name="size">
+        </div>
+        <div id="voltageField" style="display:none;">
+            <label for="voltage">Voltage:</label>
+            <input type="text" id="voltage" name="voltage">
+        </div>
+        <div>
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" required>
+        </div>
+        <div>
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" name="stock" required>
+        </div>
+        <div>
+            <label for="image_url">Image URL:</label>
+            <input type="url" id="image_url" name="image_url" required>
+        </div>
+        <div>
+            <label for="brand">Brand:</label>
+            <input type="text" id="brand" name="brand" required>
+        </div>
+        <input type="submit" value="Create Product"> 
+        <input type="button" value="Cancel" id="cancelButton">
+    </form>
 </div>
 
-    <div class="flex-container">
+   <div class="flex-container">
         <div class="tire-title"><h3>Tire section</h3>
         </div>
             <div class="tire-section">
                 <div class="item-container">
-                    <!--DITO MALALAGAY YUNG MGA ITEMS-->
+                    <!--DITO MAKAKARGA YUNG MGA PRODUCTS FROM DB-->
+                </div>
+
+                <div class="item-container">
+                    <!--DITO MAKAKARGA YUNG MGA PRODUCTS FROM DB-->
+                </div>
+
+                <div class="item-container">
+                    <!--DITO MAKAKARGA YUNG MGA PRODUCTS FROM DB-->
                 </div>
             </div>  
     </div>
@@ -268,7 +395,19 @@ button:hover {
         </div>
             <div class="Battery-section">
                 <div class="item-container">
-                    <!--DITO MALALAGAY YUNG MGA ITEMS-->
+                    <!--DITO MAKAKARGA YUNG MGA PRODUCTS FROM DB-->
+                </div>
+
+                <div class="item-container">
+                    <!--DITO MAKAKARGA YUNG MGA PRODUCTS FROM DB-->
+                </div>
+
+                <div class="item-container">
+                    <!--DITO MAKAKARGA YUNG MGA PRODUCTS FROM DB-->
+                </div>
+
+                <div class="item-container">
+                    <!--DITO MAKAKARGA YUNG MGA PRODUCTS FROM DB-->
                 </div>
             </div>   
     </div>
@@ -279,7 +418,19 @@ button:hover {
         </div>
             <div class="Lubricant-section">
                 <div class="item-container">
-                    <!--DITO MALALAGAY YUNG MGA ITEMS-->
+                    <!--DITO MAKAKARGA YUNG MGA PRODUCTS FROM DB-->
+                </div>
+
+                <div class="item-container">
+                    <!--DITO MAKAKARGA YUNG MGA PRODUCTS FROM DB-->
+                </div>
+
+                <div class="item-container">
+                    <!--DITO MAKAKARGA YUNG MGA PRODUCTS FROM DB-->
+                </div>
+
+                <div class="item-container">
+                    <!--DITO MAKAKARGA YUNG MGA PRODUCTS FROM DB-->
                 </div>
             </div>   
     </div>
@@ -290,7 +441,19 @@ button:hover {
         </div>
             <div class="Oil-section">
                 <div class="item-container">
-                    <!--DITO MALALAGAY YUNG MGA ITEMS-->
+                    <!--DITO MAKAKARGA YUNG MGA PRODUCTS FROM DB-->
+                </div>
+
+                <div class="item-container">
+                    <!--DITO MAKAKARGA YUNG MGA PRODUCTS FROM DB-->
+                </div>
+
+                <div class="item-container">
+                    <!--DITO MAKAKARGA YUNG MGA PRODUCTS FROM DB-->
+                </div>
+
+                <div class="item-container">
+                    <!--DITO MAKAKARGA YUNG MGA PRODUCTS FROM DB-->
                 </div>
             </div>
     </div>

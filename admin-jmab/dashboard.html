@@ -29,8 +29,14 @@ body {
     height: 100%;
     background-color: #012647;
     transition: .3s ease;
-    padding-top: 20px;
     color: white; 
+    border-top-right-radius: 15px; 
+    border-bottom-right-radius: 15px; 
+}
+
+#sidebar img{
+    width: 130px;
+    height: 130px;
 }
 
 #sidebar hr{
@@ -41,7 +47,6 @@ body {
     font-weight: 100;
     font-size: 30px;
     text-align: center;
-    padding-bottom: 50px;
 }
 
 #sidebar .side-menu {
@@ -68,7 +73,7 @@ body {
 }
 
 main {
-    margin-left: 200px; 
+    margin-left: 190px; 
     padding: 20px;
     min-height: 100vh;
     background-color: #DCD7C9; 
@@ -168,19 +173,46 @@ th {
 .canceled {
     background: red;
 }
+
+#sidebar .side-menu li.active {
+    background-color: #023d6d; /* A slightly lighter shade than the sidebar background */
+}
+
+#sidebar .side-menu li.active a {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* Optional: Add hover effect for better UX */
+#sidebar .side-menu li a:hover {
+    background-color: #023d6d;
+    color: #ffffff;
+}
+
+#sidebar .side-menu li a:hover {
+    background-color: #023d6d;
+    color: #ffffff;
+}
+
+.logo {
+    filter: invert(1) brightness(1000%) grayscale(100%) contrast(100%) sepia(0) saturate(0);
+    }
 </style>
 </head>
 
 <body>
     <!-- SIDEBAR -->
     <section id="sidebar">
-       <div class="h1">J-Mab Admin Page</div>
+        <div class="h1">
+            <img src="ICONS.png" class="logo" alt="Logo">
+            <p> Admin </p>
+        </div>
         <hr>
         <ul class="side-menu">
             <li><a href="/JMAB/admin-jmab/dashboard.html"><i class="fas fa-gauge"></i> Dashboard</a></li>
             <li><a href="/JMAB/admin-jmab/products.html"><i class="fas fa-box"></i> Products</a></li>
-            <li><a href="/JMAB/admin-jmab/orderConfirm.html"><i class="fas fa-box"></i> Order Confimation</a></li>
-            <li><a href="/JMAB/admin-jmab/users.html"><i class="fas fa-box"></i> Users</a></li>
+            <li><a href="/JMAB/admin-jmab/orderConfirm.html"><i class="fas fa-box"></i> Orders</a></li>
+            <li><a href="/JMAB/admin-jmab/users.html"><i class="fas fa-box"></i> Customers</a></li>
             <li id="logout"><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </section>
