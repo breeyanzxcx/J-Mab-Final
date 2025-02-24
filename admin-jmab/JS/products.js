@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const productFormContainer = document.getElementById('productFormContainer');
     const addProductButton = document.getElementById('addProductButton');
     const cancelButton = document.getElementById('cancelButton');
-
     const tireSection = document.querySelector('.tire-section');
     const batterySection = document.querySelector('.Battery-section');
     const lubricantSection = document.querySelector('.Lubricant-section');
@@ -42,7 +41,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 return;
             }
 
-            const response = await fetch('http://localhost/jmab/old_jmab/api/product/create', {
+            const response = await fetch('http://localhost/jmab/abad/api/product/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -78,7 +77,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Fetch and display products
     async function loadProducts() {
         try {
-            const response = await fetch('http://localhost/jmab/old_jmab/api/product/products');
+            const response = await fetch('http://localhost/abad/business-jmab/api/product/products');
             const data = await response.json();  // The response now contains a "products" field
 
             console.log('API Response:', data);  // Log the entire response to check its structure

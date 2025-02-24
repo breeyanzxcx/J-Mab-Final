@@ -12,23 +12,27 @@
       <img src="../images/J-mab Logo.png" alt="J-MAB Logo">
       <span>J-MAB</span>
     </div>
+
     <div class="nav-links">
       <a href="index.php?page=home" class="<?php echo (!isset($_GET['page']) || $_GET['page'] == 'home') ? 'active' : ''; ?>">HOME</a>
       <a href="index.php?page=products" class="<?php echo (isset($_GET['page']) && $_GET['page'] == 'products') ? 'active' : ''; ?>">PRODUCTS</a>
       <a href="index.php?page=about" class="<?php echo (isset($_GET['page']) && $_GET['page'] == 'about') ? 'active' : ''; ?>">ABOUT</a>
     </div>
+
     <div class="search-bar">
       <input type="text" placeholder="Search">
       <button>
         <img src="../images/search.png" alt="Search Icon">
       </button>
     </div>
+
     <div class="action-icons">
       <img src="../images/cart.png" alt="Cart Icon">
       <img src="../images/notifications.png" alt="Notification Icon">
       <div class="../profile-button" onclick="toggleDropdown()">
         <img src="../images/profile.png" alt="Profile Icon">
       </div>
+      
       <div class="profile-dropdown" id="profileDropdown">
         <a href="#">My Profile</a>
         <a href="#">Settings</a>
@@ -54,6 +58,7 @@
       <img src="images/fb.png" alt="Website Icon" class="footer-icon">
       <a href="https://www.facebook.com/jmab.trd" target="_blank">www.facebook.com/jmab.trd</a>
     </div>
+    
     <div class="footer-right">
       <div class="contact-info">
         <img src="images/phone.png" alt="Phone Icon" class="footer-icon">

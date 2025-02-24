@@ -6,6 +6,7 @@
     <title>J-Mab Admin</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="users.js" defer></script>
     <style>
         * {
             text-decoration: none;
@@ -136,7 +137,7 @@
         }
 
         #sidebar .side-menu li.active {
-            background-color: #023d6d; /* A slightly lighter shade than the sidebar background */
+            background-color: #023d6d; 
         }
         
         #sidebar .side-menu li.active a {
@@ -144,7 +145,6 @@
             font-weight: 500;
         }
         
-        /* Optional: Add hover effect for better UX */
         #sidebar .side-menu li a:hover {
             background-color: #023d6d;
             color: #ffffff;
@@ -193,7 +193,7 @@
                         <th>        </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="usersTable">
                     <!--DITO MALALAGAY YUNG MGA USER-->
                 </tbody>
             </table>
