@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const loadingScreen = document.getElementById("loading-screen");
 
     // Logout confirmation
     document.getElementById('logout').addEventListener('click', function(e) {
@@ -10,6 +9,4 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.href = '../J-Mab/HTML/sign-in.php'; // Redirect to login page
         }
     });
-
-
 });

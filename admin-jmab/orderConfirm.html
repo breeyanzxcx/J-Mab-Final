@@ -81,30 +81,12 @@ main {
     width: calc(100% - 200px);
 }
 
-#sidebar .side-menu li.active {
-    background-color: #023d6d; /* A slightly lighter shade than the sidebar background */
+#sidebar .side-menu li a:hover, #sidebar .side-menu li a.active {
+    background-color: rgba(21, 219, 160, 0.2);
+    transition: background 0.3s ease, color 0.3s ease;
+    width: 95%;
 }
-
-#sidebar .side-menu li.active a {
-    color: #ffffff;
-    font-weight: 500;
-}
-
-/* Optional: Add hover effect for better UX */
-#sidebar .side-menu li a:hover {
-    background-color: #023d6d;
-    color: #ffffff;
-}
-
-#sidebar .side-menu li a:hover {
-    background-color: #023d6d;
-    color: #ffffff;
-}
-
-.logo {
-    filter: invert(1) brightness(1000%) grayscale(100%) contrast(100%) sepia(0) saturate(0);
-}
-    </style>
+</style>
 </head>
 
 <body>
@@ -118,8 +100,8 @@ main {
         <ul class="side-menu">
             <li><a href="/JMAB/admin-jmab/dashboard.html"><i class="fas fa-gauge"></i> Dashboard</a></li>
             <li><a href="/JMAB/admin-jmab/products.html"><i class="fas fa-box"></i> Products</a></li>
-            <li><a href="/JMAB/admin-jmab/orderConfirm.html"><i class="fas fa-box"></i> Orders</a></li>
-            <li><a href="/JMAB/admin-jmab/users.html"><i class="fas fa-box"></i> Customers</a></li>
+            <li><a href="/JMAB/admin-jmab/orderConfirm.html" class="active"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+            <li><a href="/JMAB/admin-jmab/users.html"><i class="fas fa-user-circle"></i> Customers</a></li>
             <li id="logout"><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </section>

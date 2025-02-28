@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 return;
             }
 
-            const response = await fetch('http://localhost/jmab/abad/api/product/create', {
+            const response = await fetch('http://localhost/jmab/old_jmab/api/product/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                         <p>Stock: ${product.stock}</p> <!-- Display stock -->
                         ${product.size ? `<p>Size: ${product.size}</p>` : ''}
                         ${product.voltage ? `<p>Voltage: ${product.voltage}</p>` : ''}
-                        <p>Price: $${product.price}</p>
+                        <p>Price: ₱${product.price}</p>
                     `;
 
                     // Add product to the appropriate section based on category
